@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; // Add this line!
+using Microsoft.EntityFrameworkCore;
 using UniversityPortal.Data;
 using UniversityPortal.Models.Entities;
 using UniversityPortal.ViewModel;
@@ -21,6 +21,25 @@ namespace UniversityPortal.Controllers
             return View(students);
         }
 
-        // ... rest of your Create actions remain the same
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(AddStudentViewModel viewModel)
+        {
+            var student = new Student
+            {
+                Id = Guid.NewGuid(),
+                Name = viewModel.Name,
+                Email = viewModel.Email,
+                Department = viewModel.Department
+            };
+            await _context.Students.AddAsync(student);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
     }
 }
