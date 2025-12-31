@@ -1,0 +1,23 @@
+﻿@model List<UniversityPortal.Models.Entities.Student>
+
+<h2>Student List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        { // [cite: 1761]
+          <tr>
+              <td>@student.Name</td>
+              <td>@student.Email</td>
+              <td>@student.Department</td>
+          </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Create" class="btn btn-primary">Add New Student</a>

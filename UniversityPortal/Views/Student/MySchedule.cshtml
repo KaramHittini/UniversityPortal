@@ -1,0 +1,23 @@
+﻿@model List<UniversityPortal.Models.Entities.Enrollment>
+
+<h2>My Class Schedule</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Professor</th>
+            <th>Enrollment Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Course.CourseName</td>
+                <td>@item.Course.Professor.Name</td>
+                <td>@item.EnrollmentDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

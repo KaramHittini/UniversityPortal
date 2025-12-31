@@ -1,0 +1,27 @@
+﻿@model UniversityPortal.ViewModel.ProfessorCoursesViewModel
+
+<h2>Assigned Courses for @Model.ProfessorName</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Course Name</th>
+            <th>Credits</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model.AssignedCourses)
+        {
+            <tr>
+                <td>@course.CourseCode</td>
+                <td>@course.CourseName</td>
+                <td>@course.CreditHours</td>
+                <td>
+                    <a class="btn btn-sm btn-info" asp-action="ViewStudents" asp-route-id="@course.Id">View Students</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
